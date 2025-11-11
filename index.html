@@ -3,49 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Film Noir Lookbook: The Projection Room</title>
+<title>Film Noir: The Cost of Living</title>
 <style>
 body {
   margin: 0;
   font-family: 'Courier New', monospace;
   color: #f5f5f5;
-  background-color: #000;
-  background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.9) 80%);
-  background-size: cover;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 80%);
   background-attachment: fixed;
   overflow-x: hidden;
-  animation: flicker 5s infinite alternate;
+}
+
+/* Flicker and smoke overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://i.ibb.co/mGPYLKZ/smoke-overlay.gif') center/cover repeat;
+  opacity: 0.07;
+  mix-blend-mode: screen;
+  z-index: 0;
+  animation: flicker 6s infinite alternate;
 }
 
 @keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {opacity: 1;}
-  20%, 24%, 55% {opacity: 0.96;}
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {opacity: 0.07;}
+  20%, 24%, 55% {opacity: 0.1;}
 }
 
 header {
   text-align: center;
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   padding: 2rem;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(10, 10, 10, 0.75);
   border-bottom: 1px solid #444;
   letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
 }
 
 nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background: rgba(10, 10, 10, 0.9);
-  padding: 0.5rem;
+  background: rgba(15, 15, 15, 0.85);
   border-bottom: 1px solid #333;
+  position: relative;
+  z-index: 1;
 }
 
 nav button {
   background: none;
-  border: 1px solid #777;
+  border: 1px solid #888;
   color: #f5f5f5;
-  padding: 0.7rem 1.4rem;
-  margin: 0.3rem;
+  padding: 0.6rem 1.4rem;
+  margin: 0.4rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -61,10 +73,12 @@ nav button:hover {
   transition: opacity 1s ease;
   padding: 2rem;
   max-width: 1000px;
-  margin: auto;
-  background: rgba(0, 0, 0, 0.75);
+  margin: 2rem auto;
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+  box-shadow: 0 0 30px rgba(255,255,255,0.05);
+  position: relative;
+  z-index: 1;
 }
 
 .tab-content.active {
@@ -79,10 +93,6 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.section {
-  margin-bottom: 2rem;
-}
-
 img {
   display: block;
   width: 80%;
@@ -90,7 +100,7 @@ img {
   height: auto;
   margin: 1.5rem auto;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
@@ -127,7 +137,7 @@ footer {
 </style>
 </head>
 <body>
-<header>Film Noir Lookbook: The Projection Room</header>
+<header>Film Noir: The Cost of Living</header>
 
 <nav>
   <button onclick="showTab('vision')">Vision</button>
@@ -138,8 +148,9 @@ footer {
 </nav>
 
 <div id="vision" class="tab-content active">
-  <h2>Vision and Lighting Philosophy</h2>
-  <p>Money is the cost of living: the fabricator of transactional, fraudulent, and true relationships. The play explores the tension between capitalism and emotional authenticity, set against a 1940s film noir aesthetic. The spotlight remains fixed on Eddie, isolating his grief and revealing that the person he speaks to may be a projection of his guilt. The rest of the bar fades into silhouettes—barely seen, but hauntingly present. This ambiguity and sharp contrast embody both the loneliness of the soldier and the artifice of storytelling itself.</p>
+  <h2>Vision and Concept</h2>
+  <p><strong>Unifying idea/main message:</strong> The purpose of the play, to us at least, is that transaction and currency will determine if relationships are genuine or not. For example, on page 127, John offers to “pay” Jess “for the whole” day: essentially, to John, this relationship was completely based on employer and employee. Additionally, for Eddie and Ani’s relationship it's similar: they talk about the insurance plan in which Ani says “I’m still on yer plan” (40) -- the reason for meeting is based on both Eddie gathering his stuff or insurance. So in practicality, we believe that the play should be experienced in both a realistic and capitalistic way: it should fully embody what the 1940s felt like while still maintaining the themes of relationships interwoven with money.</p>
+  <p><strong>Money is the Cost Of Living:</strong> the fabricator of transactional, fraudulent, and true relationships. The play explores the tension between capitalism and emotional authenticity, set against a 1940s film noir aesthetic. The spotlight remains fixed on Eddie, isolating his grief and revealing that the person he speaks to may be a projection of his guilt. The rest of the bar fades into silhouettes—barely seen, but hauntingly present.</p>
 </div>
 
 <div id="sets" class="tab-content">
@@ -147,49 +158,39 @@ footer {
 
   <div class="section">
     <h3>Eddie’s Bar Scene</h3>
-    <p><strong>Lighting:</strong> Spotlight on Eddie, background nearly pitch black with faint silhouettes. His isolation is literal and emotional, as he stands out of place, haunted by the ghosts of memory.</p>
-    <p><strong>Costume:</strong> Olive Drab Jacket M-43, white undershirt, and wool trousers—disheveled and ill-fitted to show his poverty, grief, and post-war displacement.</p>
-    <p><strong>Sound:</strong> Silence. No music or ambient sound—only Eddie’s voice echoes through the void, making his words the only reality that exists.</p>
-    <p><strong>Props:</strong> 1943 copper-plated steel penny, nonik pint glass, and several stools filling the dimly lit bar.</p>
+    <img src="Images/the_bar.png" alt="Eddie’s Bar Scene">
+    <p><strong>Props:</strong> 1943 copper-plated steel penny, nonik pint glass, and bar stools.</p>
   </div>
 
   <div class="section">
     <h3>John’s Apartment</h3>
-    <p><strong>Lighting:</strong> Warm chandelier and green-tinted Tiffany lamps cast a soft glow. The space feels rich and safe—an illusion of security.</p>
-    <p><strong>Costumes:</strong> John wears a clean wool cardigan, button-down shirt, and tie; Jess wears a utilitarian second-hand dress and wool peacoat. On date night, John’s sharp suit contrasts Jess’s borrowed red dress and lipstick—a visual metaphor for inequality and desire.</p>
-    <p><strong>Sound:</strong> Ambient 1940s jazz hum, soft and warm.</p>
+    <img src="Images/johns_living_room.png" alt="John’s Apartment">
+    <p><strong>Props:</strong> Wheelchair, razor, resume, shopping bag.</p>
     <button class="play-sound" onclick="toggleSound('johnSound', this)">🎵 Play Ambient Jazz</button>
-    <audio id="johnSound" src="https://cdn.pixabay.com/download/audio/2021/10/13/audio_4566dc85cc.mp3?filename=jazz-background-music-9833.mp3" loop></audio>
-    <p><strong>Props:</strong> Wheelchair, Jess’s resume, John’s razor, shower seat, washcloth, and shopping bag.</p>
+    <audio id="johnSound" src="https://cdn.pixabay.com/download/audio/2021/10/13/audio_4566dc85cc.mp3?filename=jazz-background-music-9833.mp3"></audio>
   </div>
 
   <div class="section">
     <h3>Ani’s Apartment</h3>
-    <p><strong>Lighting:</strong> Initially flat and stale—beige and lifeless. As Eddie returns and reconnects, warmth and vibrance slowly return to the scene.</p>
-    <p><strong>Costumes:</strong> Ani wears a traditional 1940s shirtwaist house dress—functional yet dignified, symbolizing her will to retain identity within domestic confinement.</p>
-    <p><strong>Sound:</strong> Record player—"It’s Been a Long, Long Time" fades softly in the background, faint and nostalgic.</p>
+    <img src="Images/hallway_and_bathroom.png" alt="Ani’s Apartment">
+    <p><strong>Props:</strong> Eddie’s boxes, record player, wheelchair, sponge, ashtray.</p>
     <button class="play-sound" onclick="toggleSound('aniSound', this)">🎵 Play Record Player</button>
-    <audio id="aniSound" src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_6dc0e56f77.mp3?filename=romantic-vintage-music-1940s-style-10884.mp3" loop></audio>
-    <p><strong>Props:</strong> Eddie’s boxes, record player, wheelchair, sponge, and ashtray.</p>
+    <audio id="aniSound" src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_6dc0e56f77.mp3?filename=romantic-vintage-music-1940s-style-10884.mp3"></audio>
   </div>
 </div>
 
 <div id="costumes" class="tab-content">
   <h2>Costume Designs</h2>
   <img src="Images/eddie_outfit.png" alt="Eddie Outfit">
-  <p>Eddie’s disheveled WWII-inspired outfit symbolizes poverty, exhaustion, and the struggle to reintegrate. <br><i>Source: “German M37 Wool Trousers.” AtTheFront.</i></p>
   <img src="Images/john_outfit.png" alt="John Outfit">
-  <p>John’s tidy wool cardigan and tailored shirt reflect composure and material comfort, his armor against emotional vulnerability.</p>
   <img src="Images/jess_outfit.png" alt="Jess Outfit">
-  <p>Jess’s utilitarian second-hand dress evokes the struggles of working-class women post-WWII. <br><i>Source: “Claire McCardell - ‘Pop-over’ - American - The Metropolitan Museum of Art.”</i></p>
   <img src="Images/ani_outfit.png" alt="Ani Outfit">
-  <p>Ani’s 1940s shirtwaist dress reflects a blend of function and femininity amid post-war struggle. <br><i>Source: “1940s House Dresses, Home Frocks.”</i></p>
 </div>
 
 <div id="symbols" class="tab-content">
   <h2>Symbolic Objects</h2>
   <img src="Images/symbols.png" alt="Symbolic Items">
-  <p><strong>The Sponge:</strong> Cleansing and guilt. <strong>The Piano:</strong> Nostalgia and restraint. <strong>The 1943 Copper-Plated Steel Penny:</strong> Humanity’s worth measured through survival. Each prop reinforces the moral tension and cost of living in post-war America.</p>
+  <p><strong>The Sponge:</strong> Cleansing and guilt. <strong>The Piano:</strong> Nostalgia and restraint. <strong>The 1943 Copper-Plated Steel Penny:</strong> Humanity’s worth measured through survival.</p>
 </div>
 
 <div id="works" class="tab-content">
@@ -200,7 +201,7 @@ footer {
   <p>Alexqm. “An Army Field Jacket for the Ages, the M43 Jacket and Its Four Pocket Fundamentals.” <i>QM Fashion</i>, 15 Feb. 2011, <a href="https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/" target="_blank">https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/</a>.</p>
 </div>
 
-<footer>© 2025 Film Noir Lookbook | Designed by Josh Nasseri, Matt Hong, and Isaac McHale</footer>
+<footer>© 2025 Film Noir: The Cost of Living | Designed by Josh Nasseri, Matt Hong, and Isaac McHale</footer>
 
 <script>
 function showTab(id) {
@@ -216,17 +217,23 @@ function toggleSound(id, button) {
   if (audio.paused) {
     stopAllAudio();
     audio.volume = 0.25;
-    audio.play();
-    button.textContent = ' Stop Sound';
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        button.textContent = '⏸️ Stop Sound';
+      }).catch(error => {
+        alert('Please click again to allow audio playback.');
+      });
+    }
   } else {
     audio.pause();
-    button.textContent = ' Play Scene Sound';
+    button.textContent = '🎵 Play Scene Sound';
   }
 }
 
 function stopAllAudio() {
   document.querySelectorAll('audio').forEach(a => a.pause());
-  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = 'Play Scene Sound');
+  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = '🎵 Play Scene Sound');
 }
 </script>
 </body>
