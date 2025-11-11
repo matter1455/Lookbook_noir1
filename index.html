@@ -135,11 +135,20 @@ img {
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(255,255,255,0.15);
   transition: transform 0.4s ease, filter 0.4s ease;
+  animation: photoFlicker 5s infinite ease-in-out;
+}
+
+@keyframes photoFlicker {
+  0%, 100% { filter: brightness(1) contrast(1); }
+  20% { filter: brightness(1.05) contrast(1.1); }
+  40% { filter: brightness(0.95) contrast(0.9); }
+  60% { filter: brightness(1.03) contrast(1.05); }
+  80% { filter: brightness(0.97) contrast(0.95); }
 }
 
 img:hover {
   transform: scale(1.03);
-  filter: brightness(1.1);
+  filter: brightness(1.2) contrast(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.3));
 }
 
 footer {
@@ -153,6 +162,13 @@ footer {
   z-index: 2;
   position: relative;
 }
+
+/* Works Cited Styling */
+#works p {
+  text-indent: -2em;
+  margin-left: 2em;
+  line-height: 1.5;
+}
 </style>
 </head>
 <body>
@@ -161,6 +177,7 @@ footer {
 <nav>
   <button onclick="showTab('vision')">Vision</button>
   <button onclick="showTab('sets')">Sets & Scenes</button>
+  <button onclick="showTab('inspiration')">Setting Inspiration</button>
   <button onclick="showTab('costumes')">Costume Designs</button>
   <button onclick="showTab('symbols')">Symbols</button>
   <button onclick="showTab('works')">Works Cited</button>
@@ -196,6 +213,26 @@ footer {
   </div>
 </div>
 
+<div id="inspiration" class="tab-content">
+  <h2>Setting Inspiration</h2>
+  <p>Note: to match the color scheme shown in the picture, our play will be taken in the “Film Noir” style (in black and white).</p>
+
+  <div class="section">
+    <img src="setting_inspiration/setting1_factory_front.png" alt="Factory Front">
+    <p style="text-align:center; font-style:italic;">(The Rise and Fall of Manufacturing)</p>
+  </div>
+
+  <div class="section">
+    <img src="setting_inspiration/setting2_mill_winter.png" alt="Mill in Winter">
+    <p style="text-align:center; font-style:italic;">(DaRosa, Andrew)</p>
+  </div>
+
+  <div class="section">
+    <img src="setting_inspiration/setting3_airplane_plant.png" alt="Airplane Plant Interior">
+    <p style="text-align:center; font-style:italic;">(DaRosa, Andrew)</p>
+  </div>
+</div>
+
 <div id="costumes" class="tab-content">
   <h2>Costume Designs</h2>
   <img src="Images/eddie_outfit.png" alt="Eddie Outfit">
@@ -214,14 +251,14 @@ footer {
 
 <div id="works" class="tab-content">
   <h2>Works Cited</h2>
-  <p>“German M37 Wool Trousers.” <i>Www.Atthefront.Com</i>, <a href="https://www.atthefront.com/product-p/gutm37.htm" target="_blank">https://www.atthefront.com/product-p/gutm37.htm</a>. Accessed 4 Nov. 2025.</p>
-  <p>“Claire McCardell - ‘Pop-over’ - American - the Metropolitan Museum of Art.” <i>The Metropolitan Museum of Art</i>, <a href="https://www.metmuseum.org/art/collection/search/84029" target="_blank">https://www.metmuseum.org/art/collection/search/84029</a>. Accessed 4 Nov. 2025.</p>
-  <p>“1940s House Dresses, Home Frocks.” <a href="https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/" target="_blank">https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/</a>. Accessed 3 Nov. 2025.</p>
   <p>Alexqm. “An Army Field Jacket for the Ages, the M43 Jacket and Its Four Pocket Fundamentals.” <i>QM Fashion</i>, 15 Feb. 2011, <a href="https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/" target="_blank">https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/</a>.</p>
+  <p>“Claire McCardell - ‘Pop-over’ - American - the Metropolitan Museum of Art.” <i>The Metropolitan Museum of Art</i>, <a href="https://www.metmuseum.org/art/collection/search/84029" target="_blank">https://www.metmuseum.org/art/collection/search/84029</a>. Accessed 4 Nov. 2025.</p>
+  <p>“German M37 Wool Trousers.” <i>Www.Atthefront.Com</i>, <a href="https://www.atthefront.com/product-p/gutm37.htm" target="_blank">https://www.atthefront.com/product-p/gutm37.htm</a>. Accessed 4 Nov. 2025.</p>
+  <p>“1940s House Dresses, Home Frocks.” <a href="https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/" target="_blank">https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/</a>. Accessed 3 Nov. 2025.</p>
   <p>Majok, Martyna. <i>Cost of Living</i>. Theatre Communications Group, 2020.</p>
 </div>
 
-<footer> Film Noir: The Cost of Living 2025 CHAI English Lit & Composition H| Designed by Josh Nasseri, Matt Hong, and Isaac McHale, Website Designed by Matt Hong</footer>
+<footer>Film Noir: The Cost of Living 2025 CHAI English Lit & Composition H | Designed by Josh Nasseri, Matt Hong, and Isaac McHale, Website Designed by Matt Hong</footer>
 
 <script>
 function showTab(id) {
