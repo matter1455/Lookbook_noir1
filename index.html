@@ -16,17 +16,14 @@ body {
   animation: reelFlicker var(--flicker-duration, 6s) infinite ease-in-out;
   animation-delay: var(--flicker-delay, 0s);
 }
+  /* Simulating old-school flicker effect - kinda like a grainy projector */
+  @keyframes photoFlicker {
+    0%, 100% { filter: brightness(1) contrast(1); }
+    20% { filter: brightness(1.05) contrast(1.1); }
+    40% { filter: brightness(0.95) contrast(0.9); }
+    60% { filter: brightness(1.03) contrast(1.05); }
+    80% { filter: brightness(0.97) contrast(0.95); }
 
-@keyframes reelFlicker {
-  0%, 100% { filter: brightness(1); }
-  5% { filter: brightness(0.90); }
-  12% { filter: brightness(1.05); }
-  23% { filter: brightness(0.85); }
-  37% { filter: brightness(1.10); }
-  49% { filter: brightness(0.95); }
-  63% { filter: brightness(1.00); }
-  75% { filter: brightness(0.9); }
-  87% { filter: brightness(1.15); }
 }
 
 
