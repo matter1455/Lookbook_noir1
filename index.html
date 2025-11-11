@@ -217,16 +217,16 @@ function toggleSound(id, button) {
     stopAllAudio();
     audio.volume = 0.25;
     audio.play();
-    button.textContent = '⏸️ Stop Sound';
+    button.textContent = ' Stop Sound';
   } else {
     audio.pause();
-    button.textContent = '🎵 Play Scene Sound';
+    button.textContent = ' Play Scene Sound';
   }
 }
 
 function stopAllAudio() {
   document.querySelectorAll('audio').forEach(a => a.pause());
-  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = '🎵 Play Scene Sound');
+  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = 'Play Scene Sound');
 }
 </script>
 </body>
