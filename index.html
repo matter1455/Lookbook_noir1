@@ -52,7 +52,7 @@ body::after {
   transform: rotate(-3deg);
   z-index: 1;
 }
-
+/* The projector background */
 @keyframes projectorBeam {
   0% { transform: translateX(-100%) rotate(-3deg); opacity: 0.1; }
   25% { transform: translateX(0%) rotate(-2deg); opacity: 0.2; }
@@ -134,7 +134,7 @@ img {
   transition: transform 0.4s ease, filter 0.4s ease;
   animation: photoFlicker 5s infinite ease-in-out;
 }
-
+/* Flicker for the screen*/
 @keyframes photoFlicker {
   0%, 100% { filter: brightness(1) contrast(1); }
   20% { filter: brightness(1.05) contrast(1.1); }
