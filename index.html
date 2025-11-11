@@ -12,23 +12,50 @@ body {
   background: radial-gradient(circle at center, #1a1a1a 0%, #000 80%);
   background-attachment: fixed;
   overflow-x: hidden;
+  position: relative;
+  animation: reelFlicker 3s infinite ease-in-out;
 }
 
-/* Flicker and smoke overlay */
+/* Film flicker pulse */
+@keyframes reelFlicker {
+  0%, 100% { filter: brightness(1); }
+  10%, 30%, 50%, 70%, 90% { filter: brightness(0.9); }
+  20%, 40%, 60%, 80% { filter: brightness(1.05); }
+}
+
+/* Background grain/smoke layer */
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: url('https://giphy.com/gifs/static-filter-grain-5Puwg4f1q4Pm9nfE8w') center/cover repeat;
-  opacity: 0.07;
+  background: url('https://i.imgur.com/djlfl3z.gif') center/cover repeat;
+  opacity: 0.08;
   mix-blend-mode: screen;
   z-index: 0;
-  animation: flicker 2s infinite alternate;
 }
 
-@keyframes flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {opacity: 0.07;}
-  20%, 24%, 55% {opacity: 0.1;}
+/* Projector beam overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: -10%;
+  left: -50%;
+  width: 200%;
+  height: 120%;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 40%, rgba(255,255,200,0.15) 50%, rgba(255,255,255,0) 60%);
+  opacity: 0.15;
+  animation: projectorBeam 8s infinite linear;
+  pointer-events: none;
+  transform: rotate(-3deg);
+  z-index: 1;
+}
+
+@keyframes projectorBeam {
+  0% { transform: translateX(-100%) rotate(-3deg); opacity: 0.1; }
+  25% { transform: translateX(0%) rotate(-2deg); opacity: 0.2; }
+  50% { transform: translateX(100%) rotate(-3deg); opacity: 0.15; }
+  75% { transform: translateX(0%) rotate(-2deg); opacity: 0.18; }
+  100% { transform: translateX(-100%) rotate(-3deg); opacity: 0.1; }
 }
 
 header {
@@ -39,7 +66,7 @@ header {
   border-bottom: 1px solid #444;
   letter-spacing: 2px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 nav {
@@ -49,7 +76,7 @@ nav {
   background: rgba(15, 15, 15, 0.85);
   border-bottom: 1px solid #333;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 nav button {
@@ -78,7 +105,7 @@ nav button:hover {
   border-radius: 10px;
   box-shadow: 0 0 30px rgba(255,255,255,0.05);
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .tab-content.active {
@@ -133,6 +160,8 @@ footer {
   color: #888;
   font-size: 0.9rem;
   margin-top: 2rem;
+  z-index: 2;
+  position: relative;
 }
 </style>
 </head>
@@ -149,7 +178,7 @@ footer {
 
 <div id="vision" class="tab-content active">
   <h2>Vision and Concept</h2>
-  <p><strong>Unifying idea/main message:</strong> The purpose of the play, to us at least, is that of transaction or money in society. For example, on page 127, John offers to “pay” (Majok 127)  Jess “for the whole” (Majok 127) day: essentially to John this relationship was completely based on employer and employee. Additionally, for Eddie and Ani’s relationship it's similar: they talk about the insurance plan in which Ani says “I’m still on yer plan” (Majok 40). The reason for meeting is based on Eddie gathering his stuff or insurance. So in practicality, we believe that the play should be experienced in both a realistic and capitalistic way: it should fully embody what the 1940s felt like, while still maintaining the themes of relationships and money.<p>
+  <p><strong>Unifying idea/main message:</strong> The purpose of the play, to us at least, is that of transaction or money in society. For example, on page 127, John offers to “pay” (Majok 127)  Jess “for the whole” (Majok 127) day: essentially to John this relationship was completely based on employer and employee. Additionally, for Eddie and Ani’s relationship it's similar: they talk about the insurance plan in which Ani says “I’m still on yer plan” (Majok 40). The reason for meeting is based on Eddie gathering his stuff or insurance. So in practicality, we believe that the play should be experienced in both a realistic and capitalistic way: it should fully embody what the 1940s felt like, while still maintaining the themes of relationships and money.</p>
   <p><strong>Money is the Cost Of Living:</strong> the fabricator of transactional, fraudulent, and true relationships.</p>
 </div>
 
@@ -166,7 +195,7 @@ footer {
     <h3>John’s Apartment</h3>
     <img src="Images/johns_living_room.png" alt="John’s Apartment">
     <p><strong>Props:</strong> Wheelchair, razor, resume, shopping bag.</p>
-    <button class="play-sound" onclick="toggleSound('johnSound', this)"> Play Ambient Jazz</button>
+    <button class="play-sound" onclick="toggleSound('johnSound', this)">Play Ambient Jazz</button>
     <audio id="johnSound" src="https://cdn.pixabay.com/download/audio/2021/10/13/audio_4566dc85cc.mp3?filename=jazz-background-music-9833.mp3"></audio>
   </div>
 
@@ -174,14 +203,14 @@ footer {
     <h3>Ani’s Apartment</h3>
     <img src="Images/hallway_and_bathroom.png" alt="Ani’s Apartment">
     <p><strong>Props:</strong> Eddie’s boxes, record player, wheelchair, sponge, ashtray.</p>
-    <button class="play-sound" onclick="toggleSound('aniSound', this)"> Play Record Player</button>
+    <button class="play-sound" onclick="toggleSound('aniSound', this)">Play Record Player</button>
     <audio id="aniSound" src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_6dc0e56f77.mp3?filename=romantic-vintage-music-1940s-style-10884.mp3"></audio>
   </div>
 </div>
 
 <div id="costumes" class="tab-content">
   <h2>Costume Designs</h2>
-  <p> Eddie's Costume <p>
+  <p>Eddie's Costume</p>
   <img src="Images/eddie_outfit.png" alt="Eddie Outfit">
   <img src="Images/john_outfit.png" alt="John Outfit">
   <img src="Images/jess_outfit.png" alt="Jess Outfit">
@@ -191,8 +220,8 @@ footer {
 <div id="symbols" class="tab-content">
   <h2>Symbolic Objects</h2>
   <img src="Images/symbols.png" alt="Symbolic Items">
-  <p><strong>The Sponge:</strong> Cleansing and guilt.<p>
-  <p><strong>The Piano:</strong> Nostalgia and restraint.<p> 
+  <p><strong>The Sponge:</strong> Cleansing and guilt.</p>
+  <p><strong>The Piano:</strong> Nostalgia and restraint.</p> 
   <p><strong>The 1943 Copper-Plated Steel Penny:</strong> The value of a relationship measured in currency.</p>
 </div>
 
@@ -202,7 +231,7 @@ footer {
   <p>“Claire McCardell - ‘Pop-over’ - American - the Metropolitan Museum of Art.” <i>The Metropolitan Museum of Art</i>, <a href="https://www.metmuseum.org/art/collection/search/84029" target="_blank">https://www.metmuseum.org/art/collection/search/84029</a>. Accessed 4 Nov. 2025.</p>
   <p>“1940s House Dresses, Home Frocks.” <a href="https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/" target="_blank">https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/</a>. Accessed 3 Nov. 2025.</p>
   <p>Alexqm. “An Army Field Jacket for the Ages, the M43 Jacket and Its Four Pocket Fundamentals.” <i>QM Fashion</i>, 15 Feb. 2011, <a href="https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/" target="_blank">https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/</a>.</p>
-  <p>Majok, Martyna. Cost of Living. Theatre Communications Group, 2020.<p>
+  <p>Majok, Martyna. <i>Cost of Living</i>. Theatre Communications Group, 2020.</p>
 </div>
 
 <footer>© 2025 Film Noir: The Cost of Living | Designed by Josh Nasseri, Matt Hong, and Isaac McHale, Website Designed by Matt Hong</footer>
@@ -224,20 +253,20 @@ function toggleSound(id, button) {
     const playPromise = audio.play();
     if (playPromise !== undefined) {
       playPromise.then(() => {
-        button.textContent = ' Stop Sound';
+        button.textContent = '⏸️ Stop Sound';
       }).catch(error => {
         alert('Please click again to allow audio playback.');
       });
     }
   } else {
     audio.pause();
-    button.textContent = ' Play Scene Sound';
+    button.textContent = '🎵 Play Scene Sound';
   }
 }
 
 function stopAllAudio() {
   document.querySelectorAll('audio').forEach(a => a.pause());
-  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = ' Play Scene Sound');
+  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = '🎵 Play Scene Sound');
 }
 </script>
 </body>
