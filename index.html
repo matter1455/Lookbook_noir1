@@ -1,218 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Film Noir Lookbook: The Projection Room</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      color: #e7d9b2;
-      background-color: #0a0a0a;
-      background: radial-gradient(circle at center, rgba(50,50,50,0.2) 0%, rgba(0,0,0,0.9) 90%);
-      background-size: cover;
-      background-attachment: fixed;
-      overflow-x: hidden;
-      animation: flicker 6s infinite alternate;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Film Noir Lookbook: The Projection Room</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  color: #f5f5f5;
+  background-color: #000;
+  background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.9) 80%);
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  animation: flicker 5s infinite alternate;
+}
 
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {opacity: 1;}
-      20%, 24%, 55% {opacity: 0.95;}
-    }
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {opacity: 1;}
+  20%, 24%, 55% {opacity: 0.96;}
+}
 
-    header {
-      text-align: center;
-      padding: 2rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      background: rgba(0, 0, 0, 0.7);
-      font-size: 2rem;
-      letter-spacing: 2px;
-    }
+header {
+  text-align: center;
+  font-size: 2.3rem;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid #444;
+  letter-spacing: 2px;
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1rem;
-      background: rgba(10,10,10,0.8);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: rgba(10, 10, 10, 0.9);
+  padding: 0.5rem;
+  border-bottom: 1px solid #333;
+}
 
-    nav button {
-      background: none;
-      border: 1px solid #e7d9b2;
-      color: #e7d9b2;
-      font-family: 'Courier New', monospace;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+nav button {
+  background: none;
+  border: 1px solid #777;
+  color: #f5f5f5;
+  padding: 0.7rem 1.4rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
 
-    nav button:hover {
-      background: #e7d9b2;
-      color: #0a0a0a;
-    }
+nav button:hover {
+  background: #f5f5f5;
+  color: #000;
+}
 
-    .reel-info {
-      text-align: center;
-      margin-top: 1rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
-    }
+.tab-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.05);
+}
 
-    .tab-content {
-      display: none;
-      opacity: 0;
-      transition: opacity 1.2s ease;
-      padding: 2rem;
-      max-width: 1100px;
-      margin: auto;
-      text-align: center;
-      position: relative;
-    }
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
 
-    .tab-content.active {
-      display: block;
-      opacity: 1;
-      animation: fadeIn 1s ease;
-    }
+h2 {
+  text-align: center;
+  border-bottom: 1px solid #555;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; filter: brightness(50%); }
-      to { opacity: 1; filter: brightness(100%); }
-    }
+.section {
+  margin-bottom: 2rem;
+}
 
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      justify-items: center;
-    }
+img {
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
 
-    .image-grid img {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.8);
-      filter: brightness(0.8) contrast(1.2);
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
+img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+}
 
-    .image-grid img:hover {
-      transform: scale(1.05);
-      filter: brightness(1) contrast(1.3);
-    }
+button.play-sound {
+  background: none;
+  border: 1px solid #777;
+  color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 1rem auto;
+}
 
-    .description {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      max-width: 600px;
-      margin: auto;
-      background: rgba(0,0,0,0.6);
-      padding: 1rem 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
+button.play-sound:hover {
+  background: #f5f5f5;
+  color: #000;
+}
 
-    .set-img {
-      width: 100%;
-      max-width: 900px;
-      border-radius: 10px;
-      margin: 1rem auto;
-      display: block;
-      box-shadow: 0 0 20px rgba(0,0,0,0.8);
-    }
-
-    .brighten {
-      filter: brightness(1.25) contrast(1.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 2rem;
-      background: rgba(0,0,0,0.7);
-    }
-  </style>
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid #333;
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+</style>
 </head>
 <body>
-  <header>
-    Film Noir Lookbook: The Projection Room
-  </header>
+<header>Film Noir Lookbook: The Projection Room</header>
 
-  <nav>
-    <button onclick="showTab('vision')">REEL 1: Vision</button>
-    <button onclick="showTab('outfits')">REEL 2: Outfits</button>
-    <button onclick="showTab('sets')">REEL 3: Sets</button>
-    <button onclick="showTab('symbols')">REEL 4: Symbols</button>
-  </nav>
+<nav>
+  <button onclick="showTab('vision')">Vision</button>
+  <button onclick="showTab('sets')">Sets & Scenes</button>
+  <button onclick="showTab('costumes')">Costume Designs</button>
+  <button onclick="showTab('symbols')">Symbols</button>
+  <button onclick="showTab('works')">Works Cited</button>
+</nav>
 
-  <div class="reel-info" id="reel-info">Now Playing: Reel 1 — Vision</div>
+<div id="vision" class="tab-content active">
+  <h2>Vision and Lighting Philosophy</h2>
+  <p>Money is the cost of living: the fabricator of transactional, fraudulent, and true relationships. The play explores the tension between capitalism and emotional authenticity, set against a 1940s film noir aesthetic. The spotlight remains fixed on Eddie, isolating his grief and revealing that the person he speaks to may be a projection of his guilt. The rest of the bar fades into silhouettes—barely seen, but hauntingly present. This ambiguity and sharp contrast embody both the loneliness of the soldier and the artifice of storytelling itself.</p>
+</div>
 
-  <div id="vision" class="tab-content active">
-    <div class="description">
-      <h2>Vision and Concepts</h2>
-      <p>Money is the cost of living: the fabricator of transactional, fraudulent, and true relationships. The play explores the tension between capitalism and emotional authenticity, set against a 1940s film noir aesthetic. Projected through smoke and shadow, this world lives between morality and survival, filmed through a cracked lens of post-war memory.</p>
-    </div>
+<div id="sets" class="tab-content">
+  <h2>Sets & Scenes</h2>
+
+  <div class="section">
+    <h3>Eddie’s Bar Scene</h3>
+    <p><strong>Lighting:</strong> Spotlight on Eddie, background nearly pitch black with faint silhouettes. His isolation is literal and emotional, as he stands out of place, haunted by the ghosts of memory.</p>
+    <p><strong>Costume:</strong> Olive Drab Jacket M-43, white undershirt, and wool trousers—disheveled and ill-fitted to show his poverty, grief, and post-war displacement.</p>
+    <p><strong>Sound:</strong> Silence. No music or ambient sound—only Eddie’s voice echoes through the void, making his words the only reality that exists.</p>
+    <p><strong>Props:</strong> 1943 copper-plated steel penny, nonik pint glass, and several stools filling the dimly lit bar.</p>
   </div>
 
-  <div id="outfits" class="tab-content">
-    <h2>Character Outfits</h2>
-    <div class="image-grid">
-      <img src="Images/eddie_outfit.png" alt="Eddie's Outfit">
-      <img src="Images/ani_outfit.png" alt="Ani's Outfit">
-      <img src="Images/john_outfit.png" alt="John's Outfit">
-      <img src="Images/jess_outfit.png" alt="Jess's Outfit">
-    </div>
-    <div class="description">
-      <p>Each character’s outfit reflects their relationship to wealth, guilt, and survival. Together, they form a cast of silhouettes shaped by post-war trauma and flickering light.</p>
-    </div>
+  <div class="section">
+    <h3>John’s Apartment</h3>
+    <p><strong>Lighting:</strong> Warm chandelier and green-tinted Tiffany lamps cast a soft glow. The space feels rich and safe—an illusion of security.</p>
+    <p><strong>Costumes:</strong> John wears a clean wool cardigan, button-down shirt, and tie; Jess wears a utilitarian second-hand dress and wool peacoat. On date night, John’s sharp suit contrasts Jess’s borrowed red dress and lipstick—a visual metaphor for inequality and desire.</p>
+    <p><strong>Sound:</strong> Ambient 1940s jazz hum, soft and warm.</p>
+    <button class="play-sound" onclick="toggleSound('johnSound', this)">🎵 Play Ambient Jazz</button>
+    <audio id="johnSound" src="https://cdn.pixabay.com/download/audio/2021/10/13/audio_4566dc85cc.mp3?filename=jazz-background-music-9833.mp3" loop></audio>
+    <p><strong>Props:</strong> Wheelchair, Jess’s resume, John’s razor, shower seat, washcloth, and shopping bag.</p>
   </div>
 
-  <div id="sets" class="tab-content">
-    <h2>Set Designs</h2>
-    <img src="Images/the_bar.png" alt="The Bar" class="set-img brighten">
-    <p class="description">The Bar — a smoky intersection of confession and transaction. A place where light cuts through the haze, exposing truth and deception alike.</p>
-    <img src="Images/hallway_and_bathroom.png" alt="Hallway and Bathroom" class="set-img">
-    <p class="description">Ani’s Hallway — narrow, reflective, and fragmented; a claustrophobic space of memory and self-doubt.</p>
-    <img src="Images/johns_living_room.png" alt="John’s Living Room" class="set-img">
-    <p class="description">John’s Living Room — meticulously arranged, but haunted by absence. Shadows cast by furniture form invisible bars of expectation.</p>
+  <div class="section">
+    <h3>Ani’s Apartment</h3>
+    <p><strong>Lighting:</strong> Initially flat and stale—beige and lifeless. As Eddie returns and reconnects, warmth and vibrance slowly return to the scene.</p>
+    <p><strong>Costumes:</strong> Ani wears a traditional 1940s shirtwaist house dress—functional yet dignified, symbolizing her will to retain identity within domestic confinement.</p>
+    <p><strong>Sound:</strong> Record player—"It’s Been a Long, Long Time" fades softly in the background, faint and nostalgic.</p>
+    <button class="play-sound" onclick="toggleSound('aniSound', this)">🎵 Play Record Player</button>
+    <audio id="aniSound" src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_6dc0e56f77.mp3?filename=romantic-vintage-music-1940s-style-10884.mp3" loop></audio>
+    <p><strong>Props:</strong> Eddie’s boxes, record player, wheelchair, sponge, and ashtray.</p>
   </div>
+</div>
 
-  <div id="symbols" class="tab-content">
-    <h2>Symbolism and Artifacts</h2>
-    <div class="image-grid">
-      <img src="Images/symbols.png" alt="Symbolic Items">
-    </div>
-    <div class="description">
-      <p>The Sponge — cleansing and guilt. The Piano — nostalgia and restraint. The 1943 Copper-Plated Steel Penny — the cost of humanity, the weight of survival.</p>
-    </div>
-  </div>
+<div id="costumes" class="tab-content">
+  <h2>Costume Designs</h2>
+  <img src="Images/eddie_outfit.png" alt="Eddie Outfit">
+  <p>Eddie’s disheveled WWII-inspired outfit symbolizes poverty, exhaustion, and the struggle to reintegrate. <br><i>Source: “German M37 Wool Trousers.” AtTheFront.</i></p>
+  <img src="Images/john_outfit.png" alt="John Outfit">
+  <p>John’s tidy wool cardigan and tailored shirt reflect composure and material comfort, his armor against emotional vulnerability.</p>
+  <img src="Images/jess_outfit.png" alt="Jess Outfit">
+  <p>Jess’s utilitarian second-hand dress evokes the struggles of working-class women post-WWII. <br><i>Source: “Claire McCardell - ‘Pop-over’ - American - The Metropolitan Museum of Art.”</i></p>
+  <img src="Images/ani_outfit.png" alt="Ani Outfit">
+  <p>Ani’s 1940s shirtwaist dress reflects a blend of function and femininity amid post-war struggle. <br><i>Source: “1940s House Dresses, Home Frocks.”</i></p>
+</div>
 
-  <footer>
-    © 2025 Film Noir Lookbook | Designed by Josh Nasseri, Matt Hong, and Isaac McHale, Website Designed by Matt Hong
-  </footer>
+<div id="symbols" class="tab-content">
+  <h2>Symbolic Objects</h2>
+  <img src="Images/symbols.png" alt="Symbolic Items">
+  <p><strong>The Sponge:</strong> Cleansing and guilt. <strong>The Piano:</strong> Nostalgia and restraint. <strong>The 1943 Copper-Plated Steel Penny:</strong> Humanity’s worth measured through survival. Each prop reinforces the moral tension and cost of living in post-war America.</p>
+</div>
 
-  <script>
-    function showTab(id) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => {
-        tab.classList.remove('active');
-      });
-      const selected = document.getElementById(id);
-      selected.classList.add('active');
-      const reelInfo = document.getElementById('reel-info');
-      const reelMap = { vision: 'Reel 1 — Vision', outfits: 'Reel 2 — Outfits', sets: 'Reel 3 — Sets', symbols: 'Reel 4 — Symbols' };
-      reelInfo.textContent = 'Now Playing: ' + reelMap[id];
-    }
-  </script>
+<div id="works" class="tab-content">
+  <h2>Works Cited</h2>
+  <p>“German M37 Wool Trousers.” <i>Www.Atthefront.Com</i>, <a href="https://www.atthefront.com/product-p/gutm37.htm" target="_blank">https://www.atthefront.com/product-p/gutm37.htm</a>. Accessed 4 Nov. 2025.</p>
+  <p>“Claire McCardell - ‘Pop-over’ - American - the Metropolitan Museum of Art.” <i>The Metropolitan Museum of Art</i>, <a href="https://www.metmuseum.org/art/collection/search/84029" target="_blank">https://www.metmuseum.org/art/collection/search/84029</a>. Accessed 4 Nov. 2025.</p>
+  <p>“1940s House Dresses, Home Frocks.” <a href="https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/" target="_blank">https://vintagedancer.com/1940s/1940s-house-dresses-home-frocks/</a>. Accessed 3 Nov. 2025.</p>
+  <p>Alexqm. “An Army Field Jacket for the Ages, the M43 Jacket and Its Four Pocket Fundamentals.” <i>QM Fashion</i>, 15 Feb. 2011, <a href="https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/" target="_blank">https://qmfashion.wordpress.com/2011/02/15/an-army-field-jacket-for-the-ages-the-m43-jacket-and-its-four-pocket-fundamentals/</a>.</p>
+</div>
+
+<footer>© 2025 Film Noir Lookbook | Designed by Josh Nasseri, Matt Hong, and Isaac McHale</footer>
+
+<script>
+function showTab(id) {
+  const tabs = document.querySelectorAll('.tab-content');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  const selected = document.getElementById(id);
+  selected.classList.add('active');
+  stopAllAudio();
+}
+
+function toggleSound(id, button) {
+  const audio = document.getElementById(id);
+  if (audio.paused) {
+    stopAllAudio();
+    audio.volume = 0.25;
+    audio.play();
+    button.textContent = '⏸️ Stop Sound';
+  } else {
+    audio.pause();
+    button.textContent = '🎵 Play Scene Sound';
+  }
+}
+
+function stopAllAudio() {
+  document.querySelectorAll('audio').forEach(a => a.pause());
+  document.querySelectorAll('button.play-sound').forEach(b => b.textContent = '🎵 Play Scene Sound');
+}
+</script>
 </body>
 </html>
