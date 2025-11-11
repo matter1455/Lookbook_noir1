@@ -3,193 +3,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Film Noir: The Cost of Living</title>
+  <title>Film Noir Lookbook: The Projection Room</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
-      color: #f2f2f2;
-      background: #000;
-      background-Image: url('Images/film_noir_style_example.png'); /* Replace if you have another background gif */
+      font-family: 'Playfair Display', serif;
+      color: #e7d9b2;
+      background-color: #0a0a0a;
+      background-image: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.9) 80%), url('https://i.ibb.co/7NRkqvC/film-grain.gif');
       background-size: cover;
       background-attachment: fixed;
-      background-position: center;
+      overflow-x: hidden;
+      animation: flicker 6s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {opacity: 1;}
+      20%, 24%, 55% {opacity: 0.95;}
     }
 
     header {
       text-align: center;
       padding: 2rem;
-      background-color: rgba(10, 10, 10, 0.8);
-      border-bottom: 2px solid #333;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin: 0;
-      color: #e0e0e0;
-      letter-spacing: 1px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0, 0, 0, 0.7);
+      font-size: 2rem;
+      letter-spacing: 2px;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      background-color: rgba(20, 20, 20, 0.85);
-      border-bottom: 1px solid #333;
-      backdrop-filter: blur(4px);
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(10,10,10,0.8);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
     nav button {
       background: none;
-      border: none;
-      color: #d4d4d4;
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
+      border: 1px solid #e7d9b2;
+      color: #e7d9b2;
+      font-family: 'Courier New', monospace;
+      padding: 0.5rem 1rem;
       cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+      transition: all 0.3s ease;
     }
 
     nav button:hover {
-      background-color: rgba(80, 80, 80, 0.5);
-      color: white;
+      background: #e7d9b2;
+      color: #0a0a0a;
+    }
+
+    .reel-info {
+      text-align: center;
+      margin-top: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
     }
 
     .tab-content {
       display: none;
       opacity: 0;
-      transition: opacity 0.8s ease;
+      transition: opacity 1.2s ease;
       padding: 2rem;
       max-width: 1100px;
       margin: auto;
       text-align: center;
+      position: relative;
     }
 
     .tab-content.active {
-      display: flex;
+      display: block;
       opacity: 1;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      background-color: rgba(15, 15, 15, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
       animation: fadeIn 1s ease;
     }
 
-    .tab-content img {
-      max-width: 450px;
-      border-radius: 10px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
-      filter: grayscale(100%) contrast(1.2);
-      transition: transform 0.5s ease;
+    @keyframes fadeIn {
+      from { opacity: 0; filter: brightness(50%); }
+      to { opacity: 1; filter: brightness(100%); }
     }
 
-    .tab-content img:hover {
-      transform: scale(1.03);
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+
+    .image-grid img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      filter: brightness(0.8) contrast(1.2);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+      filter: brightness(1) contrast(1.3);
     }
 
     .description {
-      max-width: 500px;
-      text-align: left;
       font-size: 1.1rem;
-      color: #ccc;
       line-height: 1.6;
+      max-width: 600px;
+      margin: auto;
+      background: rgba(0,0,0,0.6);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
+    .set-img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 10px;
+      margin: 1rem auto;
+      display: block;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    .brighten {
+      filter: brightness(1.25) contrast(1.1);
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: rgba(10, 10, 10, 0.85);
-      border-top: 1px solid #333;
-      margin-top: 2rem;
       font-size: 0.9rem;
-      color: #aaa;
+      color: rgba(255,255,255,0.5);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 2rem;
+      background: rgba(0,0,0,0.7);
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Film Noir: The Cost of Living</h1>
-    <p style="font-size:1.1rem; color:#aaa;">A post-war theatrical design project</p>
+    🎞️ Film Noir Lookbook: The Projection Room
   </header>
 
   <nav>
-    <button onclick="showTab('vision')">Vision</button>
-    <button onclick="showTab('eddie')">Eddie’s Outfit</button>
-    <button onclick="showTab('ani')">Ani’s Outfit</button>
-    <button onclick="showTab('john')">John’s Outfit</button>
-    <button onclick="showTab('jess')">Jess’s Outfit</button>
-    <button onclick="showTab('sets')">Sets</button>
-    <button onclick="showTab('symbols')">Symbols</button>
+    <button onclick="showTab('vision')">REEL 1: Vision</button>
+    <button onclick="showTab('outfits')">REEL 2: Outfits</button>
+    <button onclick="showTab('sets')">REEL 3: Sets</button>
+    <button onclick="showTab('symbols')">REEL 4: Symbols</button>
   </nav>
 
+  <div class="reel-info" id="reel-info">Now Playing: Reel 1 — Vision</div>
+
   <div id="vision" class="tab-content active">
-    <img src="Images/vision_main_message.png" alt="Vision">
     <div class="description">
       <h2>Vision and Concepts</h2>
-      <p>
-        Money is the cost of living: the fabricator of transactional, fraudulent, and true relationships.
-        The play explores the tension between capitalism and emotional authenticity, set against a 1940s film noir aesthetic.
-        Black-and-white tones, harsh shadows, and industrial backdrops embody a post-war America where every relationship has a price.
-      </p>
+      <p>Money is the cost of living: the fabricator of transactional, fraudulent, and true relationships. The play explores the tension between capitalism and emotional authenticity, set against a 1940s film noir aesthetic. Projected through smoke and shadow, this world lives between morality and survival, filmed through a cracked lens of post-war memory.</p>
     </div>
   </div>
 
-  <div id="eddie" class="tab-content">
-    <img src="Images/eddie_outfit.png" alt="Eddie's Outfit">
-    <div class="description">
-      <h2>Eddie’s Outfit</h2>
-      <p>Olive Drab Jacket M-43, Practical White T-Shirt, M37 Wool Trousers — a grounded, military-influenced style representing post-war struggle.</p>
+  <div id="outfits" class="tab-content">
+    <h2>Character Outfits</h2>
+    <div class="image-grid">
+      <img src="Images/eddie_outfit.png" alt="Eddie's Outfit">
+      <img src="Images/ani_outfit.png" alt="Ani's Outfit">
+      <img src="Images/john_outfit.png" alt="John's Outfit">
+      <img src="Images/jess_outfit.png" alt="Jess's Outfit">
     </div>
-  </div>
-
-  <div id="ani" class="tab-content">
-    <img src="Images/ani_outfit.png" alt="Ani's Outfit">
     <div class="description">
-      <h2>Ani’s Outfit</h2>
-      <p>Inspired by post-WWII women’s fashion — a mix of modesty and resilience, symbolizing both nostalgia and endurance in changing times.</p>
-    </div>
-  </div>
-
-  <div id="john" class="tab-content">
-    <img src="Images/john_outfit.png" alt="John's Outfit">
-    <div class="description">
-      <h2>John’s Outfit</h2>
-      <p>Wool cardigan and Oxford shirt with tie — refined, materialistic, and composed, reflecting John's pragmatic view of relationships.</p>
-    </div>
-  </div>
-
-  <div id="jess" class="tab-content">
-    <img src="Images/jess_outfit.png" alt="Jess's Outfit">
-    <div class="description">
-      <h2>Jess’s Outfit</h2>
-      <p>Simple cotton dress inspired by 1940s working-class women — practicality over glamour, representing humility and honesty.</p>
+      <p>Each character’s outfit reflects their relationship to wealth, guilt, and survival. Together, they form a cast of silhouettes shaped by post-war trauma and flickering light.</p>
     </div>
   </div>
 
   <div id="sets" class="tab-content">
-    <img src="Images/the_bar.png" alt="The Bar">
-    <div class="description">
-      <h2>Set Design</h2>
-      <p>The Bar, Ani’s Hallway, and John’s Living Room — designed in black-and-white Film Noir style, where shadow and light convey moral ambiguity and memory.</p>
-    </div>
+    <h2>Set Designs</h2>
+    <img src="Images/the_bar.png" alt="The Bar" class="set-img brighten">
+    <p class="description">The Bar — a smoky intersection of confession and transaction. A place where light cuts through the haze, exposing truth and deception alike.</p>
+    <img src="Images/hallway_and_bathroom.png" alt="Hallway and Bathroom" class="set-img">
+    <p class="description">Ani’s Hallway — narrow, reflective, and fragmented; a claustrophobic space of memory and self-doubt.</p>
+    <img src="Images/johns_living_room.png" alt="John’s Living Room" class="set-img">
+    <p class="description">John’s Living Room — meticulously arranged, but haunted by absence. Shadows cast by furniture form invisible bars of expectation.</p>
   </div>
 
   <div id="symbols" class="tab-content">
-    <img src="Images/symbols.png" alt="Symbolic Items">
+    <h2>Symbolism and Artifacts</h2>
+    <div class="image-grid">
+      <img src="Images/symbols.png" alt="Symbolic Items">
+    </div>
     <div class="description">
-      <h2>Symbols</h2>
-      <p>The Sponge (cleansing and guilt), the Piano (nostalgia and memory), and the 1943 Copper-Plated Steel Penny (the cost of humanity) echo the play’s moral tension.</p>
+      <p>The Sponge — cleansing and guilt. The Piano — nostalgia and restraint. The 1943 Copper-Plated Steel Penny — the cost of humanity, the weight of survival.</p>
     </div>
   </div>
 
   <footer>
-    <p>&copy; 2025 Film Noir: The Cost of Living | Created by Josh Nasseri, Matt Hong, Isaac McHale</p>
+    © 2025 Film Noir Lookbook | Designed by Josh Nasseri, Matt Hong, and Isaac McHale, Website Designed by Matt Hong
   </footer>
 
   <script>
@@ -197,11 +206,12 @@
       const tabs = document.querySelectorAll('.tab-content');
       tabs.forEach(tab => {
         tab.classList.remove('active');
-        tab.style.opacity = 0;
       });
       const selected = document.getElementById(id);
       selected.classList.add('active');
-      setTimeout(() => selected.style.opacity = 1, 100);
+      const reelInfo = document.getElementById('reel-info');
+      const reelMap = { vision: 'Reel 1 — Vision', outfits: 'Reel 2 — Outfits', sets: 'Reel 3 — Sets', symbols: 'Reel 4 — Symbols' };
+      reelInfo.textContent = 'Now Playing: ' + reelMap[id];
     }
   </script>
 </body>
