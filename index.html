@@ -13,14 +13,20 @@ body {
   background-attachment: fixed;
   overflow-x: hidden;
   position: relative;
-  animation: reelFlicker 10s infinite ease-in-out;
-}
+/* random, uneven film flicker */
+animation: reelFlicker var(--flicker-duration, 6s) infinite ease-in-out;
+animation-delay: var(--flicker-delay, 0s);
 
-/* Film flicker pulse */
 @keyframes reelFlicker {
   0%, 100% { filter: brightness(1); }
-  10%, 30%, 50%, 70%, 90% { filter: brightness(0.9); }
-  20%, 40%, 60%, 80% { filter: brightness(1.05); }
+  5% { filter: brightness(0.92); }
+  12% { filter: brightness(1.05); }
+  23% { filter: brightness(0.88); }
+  37% { filter: brightness(1.08); }
+  49% { filter: brightness(0.95); }
+  63% { filter: brightness(1.03); }
+  75% { filter: brightness(0.9); }
+  87% { filter: brightness(1.06); }
 }
 
 /* Background grain/smoke layer */
@@ -38,7 +44,7 @@ body::before {
 body::after {
   content: "";
   position: fixed;
-  top: -10%;
+  top: -%;
   left: -50%;
   width: 200%;
   height: 120%;
