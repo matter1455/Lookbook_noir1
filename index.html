@@ -61,7 +61,7 @@ body::after {
   100% { transform: translateX(-100%) rotate(-3deg); opacity: 0.1; }
 }
 
-header {
+  header {
   text-align: center;
   font-size: 2.4rem;
   padding: 2rem;
@@ -72,7 +72,7 @@ header {
   z-index: 2;
 }
 
-nav {
+  nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -82,7 +82,7 @@ nav {
   z-index: 2;
 }
 
-nav button {
+  nav button {
   background: none;
   border: 1px solid #888;
   color: #f5f5f5;
@@ -92,12 +92,12 @@ nav button {
   transition: all 0.3s ease;
 }
 
-nav button:hover {
+  nav button:hover {
   background: #f5f5f5;
   color: #000;
 }
 
-.tab-content {
+  tab-content {
   display: none;
   opacity: 0;
   transition: opacity 1s ease;
@@ -111,19 +111,19 @@ nav button:hover {
   z-index: 2;
 }
 
-.tab-content.active {
+  tab-content.active {
   display: block;
   opacity: 1;
 }
 
-h2 {
+  h2 {
   text-align: center;
   border-bottom: 1px solid #555;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
 }
 
-img {
+  img {
   display: block;
   width: 80%;
   max-width: 700px;
@@ -143,7 +143,7 @@ img {
   80% { filter: brightness(0.97) contrast(0.95); }
 }
 
-img:hover {
+  img:hover {
   transform: scale(1.03);
   filter: brightness(1.2) contrast(1.2) drop-shadow(0 0 10px rgba(255,255,255,0.3));
 }
